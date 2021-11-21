@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
         <activity
+            android:name=".Output"
+            android:exported="false" />
+        <activity
+            android:name=".Model"
+            android:exported="false" />
+        <activity
+            android:name=".Make"
+            android:exported="false" />
+        <activity
+            android:name=".Year"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
