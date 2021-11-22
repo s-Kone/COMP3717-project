@@ -20,7 +20,8 @@ public class Model extends AppCompatActivity {
     DatabaseReference databaseReference;
     String selectedMake;
     String selectedYear;
-    ArrayList<Object> df;
+    ArrayList<String> df;
+    Long selectedYearI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +33,13 @@ public class Model extends AppCompatActivity {
         selectedMake = intent.getStringExtra("SelectedMake");
         selectedYear = intent.getStringExtra("SelectedYear");
 
+        System.out.println(selectedMake);
+
+        selectedYearI = Long.parseLong(selectedYear);
+
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        df = new ArrayList<Object>();
+        df = new ArrayList<String>();
     }
 
     @Override
@@ -45,20 +50,11 @@ public class Model extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 df.clear();
                 for (DataSnapshot carSnapShot : dataSnapshot.getChildren()) {
-                    if(((String) carSnapShot.child("YEAR").getValue()).equals(selectedYear)){
-                        boolean e = false;
-                        for(int i=0;i<df.size();i++){
-                            if(df.get(i).equals(carSnapShot.child("MAKE").getValue())){
-                                e = true;
-                            }
-                        }
-                        if(!e){
-                            df.add(carSnapShot.child("MAKE").getValue().toString());
-                        }
-                    }
+//                    if(carSnapShot.child("MAKE").getValue().toString().equals(selectedMake) &&((Long) carSnapShot.child("YEAR").getValue()).equals(selectedYearI)){
+//                        df.add(carSnapShot.child("MODEL").getValue().toString());
+//                    }
                 }
                 System.out.println(df);
-
 
 
             }

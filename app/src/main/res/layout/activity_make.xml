@@ -21,14 +21,13 @@
 
     <Spinner
         android:id="@+id/makeSpinner"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10sp"
         android:layout_margin="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="290dp"
-        />
+        tools:layout_editor_absoluteY="290dp" />
 
     <Button
         android:id="@+id/makeButton"

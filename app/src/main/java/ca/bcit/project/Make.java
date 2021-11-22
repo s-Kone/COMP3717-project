@@ -1,5 +1,7 @@
 package ca.bcit.project;
 
+import static java.lang.String.valueOf;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,9 +27,7 @@ import java.util.Objects;
 public class Make extends AppCompatActivity {
 
     DatabaseReference firebase;
-    ListView lvlCar;
-    List<String> df;
-    ArrayList<String> help;
+    ArrayList<String> df;
     Long selectedYearI;
     String selectedYear;
     Spinner makeSpinner;
@@ -43,8 +43,12 @@ public class Make extends AppCompatActivity {
         selectedYearI = Long.parseLong(selectedYear);
         df = new ArrayList<String>();
         firebase = FirebaseDatabase.getInstance().getReference();
-        lvlCar = findViewById(R.id.carListView);
-        help = new ArrayList<String>();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_dropdown_item, df);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinner = (Spinner) findViewById(R.id.makeSpinner);
+        spinner.setAdapter(adapter);
+
     }
 
     @Override
@@ -67,13 +71,6 @@ public class Make extends AppCompatActivity {
                         }
                     }
                 }
-                System.out.println(df);
-
-
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, df);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                Spinner spinner = (Spinner) findViewById(R.id.makeSpinner);
-                spinner.setAdapter(adapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) { }
