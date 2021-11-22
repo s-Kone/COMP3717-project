@@ -26,6 +26,12 @@
         <item> 2021 </item>
     </string-array>
 
+    <string name="submit">Sumbit</string>
+
+    <string-array name="make">
+
+    </string-array>
+
     <string name="yearIntro"> On this page you may select the year of your car,
          the range is from 2000 to 2021</string>
 

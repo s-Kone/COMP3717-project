@@ -29,4 +29,13 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="290dp"
         />
+
+    <Button
+        android:id="@+id/modelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:onClick="OnClick"
+        android:padding="10sp"
+        android:layout_gravity="center"/>
 </LinearLayout>

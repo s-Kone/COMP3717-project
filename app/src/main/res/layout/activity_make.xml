@@ -29,4 +29,19 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="290dp"
         />
+
+    <Button
+        android:id="@+id/makeButton"
+        android:onClick="OnClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10sp"
+        android:text="@string/submit"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/carListView"/>
+
 </LinearLayout>
