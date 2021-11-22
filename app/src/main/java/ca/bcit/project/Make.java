@@ -31,6 +31,7 @@ public class Make extends AppCompatActivity {
     Long selectedYearI;
     String selectedYear;
     Spinner makeSpinner;
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +45,11 @@ public class Make extends AppCompatActivity {
         df = new ArrayList<String>();
         firebase = FirebaseDatabase.getInstance().getReference();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_dropdown_item, df);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner spinner = (Spinner) findViewById(R.id.makeSpinner);
-        spinner.setAdapter(adapter);
-
+        adapter = new ArrayAdapter<String> (this, android.R.layout.simple_selectable_list_item, df);
+        adapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+        makeSpinner = (Spinner) findViewById(R.id.makeSpinner);
+        makeSpinner.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -71,16 +72,22 @@ public class Make extends AppCompatActivity {
                         }
                     }
                 }
+                adapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
     }
 
     public void OnClick(View view) {
-        makeSpinner = findViewById(R.id.makeSpinner);
         Intent intent = new Intent(this, Model.class);
-        intent.putExtra("SelectedMake", String.valueOf(makeSpinner.getSelectedItem()));
+        adapter.notifyDataSetChanged();
+
+        if(makeSpinner.getSelectedItem() != null){
+            intent.putExtra("SelectedMake", makeSpinner.getSelectedItem().toString());
+        }
+
         intent.putExtra("SelectedYear", selectedYear);
         startActivity(intent);
     }

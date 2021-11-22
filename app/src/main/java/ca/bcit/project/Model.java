@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Spinner;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +23,7 @@ public class Model extends AppCompatActivity {
     String selectedYear;
     ArrayList<String> df;
     Long selectedYearI;
+    Spinner modelSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,9 @@ public class Model extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
         df = new ArrayList<String>();
+
+
+
     }
 
     @Override
