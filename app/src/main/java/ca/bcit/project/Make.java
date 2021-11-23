@@ -87,7 +87,6 @@ public class Make extends AppCompatActivity {
         if(makeSpinner.getSelectedItem() != null){
             intent.putExtra("SelectedMake", makeSpinner.getSelectedItem().toString());
         }
-
         intent.putExtra("SelectedYear", selectedYear);
         startActivity(intent);
     }
