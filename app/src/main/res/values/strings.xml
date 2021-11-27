@@ -42,5 +42,12 @@
     <string name="modelIntro"> On this page you may select the model of your car. </string>
     //output
     <string name="outputIntro"> The emissions rate of your car is: </string>
+
     <string name="title_activity_maps">Maps</string>
+    //for maps
+    <string name="ZoomIn">+</string>
+    //for maps
+    <string name="ZoomOut">-</string>
+    //for maps
+    <string name="calculate">Calculate</string>
 </resources>

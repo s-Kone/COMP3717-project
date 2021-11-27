@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -22,7 +23,6 @@ public class Garage extends AppCompatActivity {
     Long selectedYearI;
     String selectedModel;
     String emissions;
-    ArrayList<String> garage;
     TextView car;
 
     @Override
@@ -30,6 +30,7 @@ public class Garage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garage);
 
+        // Gets the Year, Make, and model of the car
         Intent intent = getIntent();
         selectedMake = intent.getStringExtra("SelectedMake");
         String selectedYear = intent.getStringExtra("SelectedYear");
@@ -37,6 +38,7 @@ public class Garage extends AppCompatActivity {
 
         selectedYearI = Long.parseLong(selectedYear);
 
+        // Reference to the data base
         reference = FirebaseDatabase.getInstance().getReference();
         car = findViewById(R.id.garage);
 
@@ -56,11 +58,16 @@ public class Garage extends AppCompatActivity {
                         }
                     }
                 }
-                car.setText("Gallons per kilometer" + emissions);
+                car.setText(String.format("This Car produces %s gallons of CO2 per kilometer", emissions));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
     }
 
+    public void OnClick(View view) {
+        Intent intent = new Intent(this, Maps.class);
+        intent.putExtra("emissions", emissions);
+        startActivity(intent);
+    }
 }
