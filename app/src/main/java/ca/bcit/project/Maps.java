@@ -296,7 +296,7 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         LatLng to = marker.get(1);
         answer = computeDistanceBetween(from, to);
         int s = (int) answer * em / 1000;
-        sd.setText("Emissions: " + s + " in Gallons");
+        sd.setText("Emissions: " + s + " gallons of CO2 emitted in this route");
     }
 
     public void onZoom(View v) {
