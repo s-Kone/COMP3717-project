@@ -36,9 +36,6 @@
             android:exported="true"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".Output"
-            android:exported="false" />
-        <activity
             android:name=".Model"
             android:exported="false" />
         <activity
